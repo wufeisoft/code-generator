@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  SYSTEM
+  "/code-generator/src/org/code/generator/dom/code-generator-config_1_0.dtd">
+
+<configuration>
+  <classPathEntry location="E:/coder/code-generator/libs/ojdbc6-20100814.jar" />
+
+  <context id="Oracle2Tables" targetRuntime="MyBatis3">
+    
+    <!--<jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+        connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:YaoOracle"
+        userId="test"
+        password="123456"
+        remarksReporting="true">
+    </jdbcConnection>-->
+
+      <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                      connectionURL="jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8"
+                      userId="root"
+                      password="root"
+                      remarksReporting="true">
+      </jdbcConnection>
+
+    <javaTypeResolver typeResolverImpl="org.code.generator.db.types.MysqlJavaTypeResolver">
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <table schema="store" allTable="false" tablesName="T_USER" tablePrefix="T_">
+    </table>
+    
+    <!--<commonPlugin templatePath="E:/coder/code-generator/src/conf/action" override="false" templateName="struts.ftl" fileSuffix="" fileExtension="xml" fileTargetProject="E:/media/wufei/gen/src/web" targetPackage="base">
+    	<property name="jspPath" value="base"/>
+        <property name="year" value="2017"/>
+        <property name="company" value="wufei"/>
+    </commonPlugin>-->
+    
+    <plugin templatePath="E:/coder/code-generator/src/conf/facade" override="false" templateName="Facade.ftl" fileSuffix="Facade" fileExtension="java" fileTargetProject="E:/media/wufei/gen/src/facade" targetPackage="com.transsion.store.facade">
+    	<property name="mapperPackage" value="com.transsion.store.mapper"/>
+    	<property name="boPackage" value="com.transsion.store.bo"/>
+        <property name="year" value="2017"/>
+        <property name="company" value="wufei"/>
+    </plugin>
+
+	<plugin templatePath="E:/coder/code-generator/src/conf/facade" override="false" templateName="mysql_xml.ftl" fileSuffix="" fileExtension="xml" fileTargetProject="E:/media/wufei/gen/src/mapper" targetPackage="ibatis.mapper">
+    	<property name="mapperPackage" value="com.transsion.store.mapper"/>
+        <property name="year" value="2017"/>
+        <property name="company" value="wufei"/>
+    </plugin>
+
+    <plugin templatePath="E:/coder/code-generator/src/conf/facade" override="false" templateName="FacadeImpl.ftl" fileSuffix="FacadeImpl" fileExtension="java" fileTargetProject="E:/media/wufei/gen/src/facadeImpl" targetPackage="com.transsion.store.facade.impl">
+    	<property name="boPackage" value="com.transsion.store.bo"/>
+    	<property name="interfacePackage" value="com.transsion.store.facade"/>
+    	<property name="servicePackage" value="com.transsion.store.service"/>
+        <property name="year" value="2017"/>
+        <property name="company" value="wufei"/>
+    </plugin>
+
+    <plugin templatePath="E:/coder/code-generator/src/conf/service" override="false" templateName="Service.ftl" fileSuffix="Service" fileExtension="java" fileTargetProject="E:/media/wufei/gen/src/service" targetPackage="com.transsion.store.service">
+    	<property name="mapperPackage" value="com.transsion.store.mapper"/>
+    	<property name="boPackage" value="com.transsion.store.bo"/>
+        <property name="year" value="2017"/>
+        <property name="company" value="wufei"/>
+    </plugin>
+
+    <plugin templatePath="E:/coder/code-generator/src/conf/bo" override="false" templateName="Pojo.ftl" fileSuffix="" fileExtension="java" fileTargetProject="E:/media/wufei/gen/src/bo" targetPackage="com.transsion.store.bo">
+        <property name="year" value="2017"/>
+        <property name="company" value="wufei"/>
+    </plugin>
+
+    <!--<plugin templatePath="E:/coder/code-generator/src/conf/action" override="true" templateName="Jsp.ftl" fileSuffix="" fileExtension="jsp" fileTargetProject="E:/media/wufei/gen/src/web" targetPackage="base">
+        <property name="year" value="2017"/>
+        <property name="company" value="wufei"/>
+    </plugin>
+
+    <plugin templatePath="E:/coder/code-generator/src/conf/action" override="true" templateName="JspPopWin.ftl" fileSuffix="PopWin" fileExtension="jsp" fileTargetProject="E:/media/wufei/gen/src/web" targetPackage="base">
+        <property name="year" value="2017"/>
+        <property name="company" value="wufei"/>
+    </plugin>
+
+    <plugin templatePath="E:/coder/code-generator/src/conf/action" override="true" templateName="js.ftl" fileSuffix="" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/web" targetPackage="include.js.base">
+        <property name="year" value="2017"/>
+        <property name="company" value="wufei"/>
+    </plugin>-->
+
+    <plugin templatePath="E:/coder/code-generator/src/conf/mapper" override="false" templateName="Mapper.ftl" fileSuffix="Mapper" fileExtension="java" fileTargetProject="E:/media/wufei/gen/src/mapper" targetPackage="com.transsion.store.mapper">
+    	<property name="boPackage" value="com.transsion.store.bo"/>
+        <property name="year" value="2017"/>
+        <property name="company" value="wufei"/>
+    </plugin>
+
+    <plugin templatePath="E:/coder/code-generator/src/conf/rest" override="false" templateName="Rest.ftl" fileSuffix="Controller" fileExtension="java" fileTargetProject="E:/media/wufei/gen/src/controller" targetPackage="com.transsion.store.controller">
+    	<property name="boPackage" value="com.transsion.store.bo"/>
+    	<property name="facadePackage" value="com.transsion.store.facade"/>
+        <property name="year" value="2017"/>
+        <property name="company" value="wufei"/>
+    </plugin>
+
+      <!--  <plugin templatePath="E:/coder/code-generator/src/conf/react" override="true" templateName="Action.ftl" fileSuffix="Action" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/web" targetPackage="action">
+            <property name="year" value="2017"/>
+            <property name="company" value="wufei"/>
+        </plugin>
+        <plugin templatePath="E:/coder/code-generator/src/conf/react" override="true" templateName="Add.ftl" fileSuffix="Add" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/web" targetPackage="components.#{tableName}">
+            <property name="year" value="2017"/>
+            <property name="company" value="wufei"/>
+        </plugin>
+        <plugin templatePath="E:/coder/code-generator/src/conf/react" override="true" templateName="Update.ftl" fileSuffix="Update" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/web" targetPackage="components.#{tableName}">
+            <property name="year" value="2017"/>
+            <property name="company" value="wufei"/>
+        </plugin>
+        <plugin templatePath="E:/coder/code-generator/src/conf/react" override="true" templateName="List.ftl" fileSuffix="Manager" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/web" targetPackage="containers.#{tableName}">
+            <property name="year" value="2017"/>
+            <property name="company" value="wufei"/>
+        </plugin>
+        <plugin templatePath="E:/coder/code-generator/src/conf/react" override="true" templateName="Reducer.ftl" fileSuffix="Reducer" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/web" targetPackage="reducers">
+            <property name="year" value="2017"/>
+            <property name="company" value="wufei"/>
+        </plugin>-->
+
+      <plugin templatePath="E:/coder/code-generator/src/conf/nodejs" override="true" templateName="add.ftl" fileSuffix="Add" fileExtension="html" fileTargetProject="E:/media/wufei/gen/src/nodejs" targetPackage="view">
+          <property name="year" value="2017"/>
+          <property name="company" value="wufei"/>
+      </plugin>
+      <plugin templatePath="E:/coder/code-generator/src/conf/nodejs" override="true" templateName="edit.ftl" fileSuffix="Edit" fileExtension="html" fileTargetProject="E:/media/wufei/gen/src/nodejs" targetPackage="view">
+          <property name="year" value="2017"/>
+          <property name="company" value="wufei"/>
+      </plugin>
+      <plugin templatePath="E:/coder/code-generator/src/conf/nodejs" override="true" templateName="manager.ftl" fileSuffix="Manager" fileExtension="html" fileTargetProject="E:/media/wufei/gen/src/nodejs" targetPackage="view">
+          <property name="year" value="2017"/>
+          <property name="company" value="wufei"/>
+      </plugin>
+      <plugin templatePath="E:/coder/code-generator/src/conf/nodejs" override="true" templateName="addJs.ftl" fileSuffix="Add" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/nodejs" targetPackage="scripts">
+          <property name="year" value="2017"/>
+          <property name="company" value="wufei"/>
+      </plugin>
+      <plugin templatePath="E:/coder/code-generator/src/conf/nodejs" override="true" templateName="editJs.ftl" fileSuffix="Edit" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/nodejs" targetPackage="scripts">
+          <property name="year" value="2017"/>
+          <property name="company" value="wufei"/>
+      </plugin>
+      <plugin templatePath="E:/coder/code-generator/src/conf/nodejs" override="true" templateName="managerJs.ftl" fileSuffix="Manager" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/nodejs" targetPackage="scripts">
+          <property name="year" value="2017"/>
+          <property name="company" value="wufei"/>
+      </plugin>
+      <plugin templatePath="E:/coder/code-generator/src/conf/nodejs" override="true" templateName="locales.ftl" fileSuffix="" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/nodejs" targetPackage="locales">
+          <property name="year" value="2017"/>
+          <property name="company" value="wufei"/>
+      </plugin>
+      <plugin templatePath="E:/coder/code-generator/src/conf/nodejs" override="true" templateName="model.ftl" fileSuffix="" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/nodejs" targetPackage="models">
+          <property name="year" value="2017"/>
+          <property name="company" value="wufei"/>
+      </plugin>
+      <plugin templatePath="E:/coder/code-generator/src/conf/nodejs" override="true" templateName="router.ftl" fileSuffix="" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/nodejs" targetPackage="routes">
+          <property name="year" value="2017"/>
+          <property name="company" value="wufei"/>
+      </plugin>
+      <plugin templatePath="E:/coder/code-generator/src/conf/nodejs" override="true" templateName="mongodb.ftl" fileSuffix="" fileExtension="js" fileTargetProject="E:/media/wufei/gen/src/nodejs" targetPackage="db">
+          <property name="year" value="2017"/>
+          <property name="company" value="wufei"/>
+      </plugin>
+    
+<!--     <plugin templatePath="F:/work/workspace/code-generator/src/conf/bo" override="true" templateName="PojoAs.ftl" fileSuffix="" fileExtension="as" fileTargetProject="F:/work/workspace/3kw/flex_3kw" targetPackage="com.shangkang.front.bo"> -->
+<!--     	<property name="boPackage" value="com.shangkang.bo"/> -->
+<!--     	<javaTypeResolver typeResolverImpl="org.code.generator.db.types.FlexTypeResolver"> -->
+<!-- 	    </javaTypeResolver> -->
+<!--     </plugin> -->
+    
+<!--     <plugin templatePath="F:/work/workspace/code-generator/src/conf/facade" override="false" templateName="Delegate.ftl" fileSuffix="Delegate" fileExtension="as" fileTargetProject="F:/work/workspace/3kw/flex_3kw" targetPackage="com.shangkang.front.delegate"> -->
+<!--     	<property name="flexBoPackage" value="com.shangkang.front.bo"/> -->
+<!--     	<javaTypeResolver typeResolverImpl="org.code.generator.db.types.FlexTypeResolver"> -->
+<!-- 	    </javaTypeResolver> -->
+<!--     </plugin> -->
+  </context>
+</configuration>
